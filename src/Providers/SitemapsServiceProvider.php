@@ -6,12 +6,11 @@
  * Time: 4:07 PM
  */
 
-namespace ReviewsBee\Providers;
+namespace Sitemaps\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use ReviewsBee\ReviesBee;
 
-class ReviewsBeeServiceProvider extends ServiceProvider
+class SitemapsServiceProvider extends ServiceProvider
 {
 
     const version = '1.0.0';
@@ -21,11 +20,12 @@ class ReviewsBeeServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = true;
+    protected $defer = false;
 
     public function boot(){
 
-        $this->publishes( [ __DIR__.'/../config/config.php' => config_path('reviewsbee.php'), ], 'config' );
+        //this->publishes( [ __DIR__.'/../config/config.php' => config_path('reviewsbee.php'), ], 'config' );
+        $this->loadViewsFrom(__DIR__.'/../views', 'sitemap');
 
     }
 
@@ -37,16 +37,7 @@ class ReviewsBeeServiceProvider extends ServiceProvider
     public function register()
     {
         // TODO: Implement register() method.
-        $this->app->singleton( 'reviewsbee', ReviesBee::class );
+        //$this->app->maske('reviewsbee');
     }
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return ['reviewsbee', 'ReviewsBee\ReviesBee'];
-    }
 }
