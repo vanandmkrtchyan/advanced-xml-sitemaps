@@ -24,7 +24,7 @@ class SitemapsServiceProvider extends ServiceProvider
 
     public function boot(){
 
-        $this->publishes( [ __DIR__.'/../config/config.php' => config_path('reviewsbee.php'), ], 'config' );
+        $this->publishes( [ __DIR__.'/../config/config.php' => config_path('sitemap.php'), ], 'config' );
         $this->loadViewsFrom(__DIR__.'/../views', 'sitemap');
 
     }
