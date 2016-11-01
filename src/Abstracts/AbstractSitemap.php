@@ -60,26 +60,6 @@ class AbstractSitemap
         return $this;
     }
 
-    public function addModel($modelClass){
-
-        if (is_array($modelClass)){
-            foreach ($modelClass as $class) {
-                $this->addModel($class);
-            }
-        } else {
-            $this->renderModel($modelClass);
-        }
-    }
-
-    public function renderModel($modelClass){
-        $model = new $modelClass;
-        if ($model instanceof BaseModel) {
-            $name = $model->getLink();
-        } elseif ($model instanceof Model) {
-            $name = $model->getTable();
-        }
-    }
-
     public function getConfig($key){
         return $this->config->{$key};
     }
@@ -93,6 +73,9 @@ class AbstractSitemap
 
     public function generate()
     {
+        if (empty($this->locations))
+            abort(404);
+
         $content =  view('sitemap::'.$this->getConfig('extension').'.'.$this->getConfig('type'))->withLocations($this->locations)->withConfigs($this->config);
         return Response::make($content, '200')->header('Content-Type', 'text/xml');
     }

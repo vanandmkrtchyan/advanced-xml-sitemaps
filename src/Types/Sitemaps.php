@@ -13,20 +13,10 @@ use Sitemaps\Abstracts\AbstractSitemap;
 
 class Sitemaps extends AbstractSitemap
 {
-
-
-    public function renderModel($modelClass){
-        $model = new $modelClass;
-        $name = null;
-        if ($model instanceof BaseModel) {
-            $name = $model->getLink();
-        } elseif ($model instanceof Model) {
-            $name = $model->getTable();
-        }
-        if($name)
-            $this->setLocations([
-                'loc' => $this->getConfig('root'). '/sitemap/' . $name . '.xml'
-            ]);
+    public function __construct()
+    {
+        parent::init();
+        $this->setConfig('type','sitemaps');
     }
 
 }

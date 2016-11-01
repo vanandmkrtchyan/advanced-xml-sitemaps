@@ -16,14 +16,8 @@ class Urls extends AbstractSitemap
 {
     public function __construct()
     {
-        parent::__construct();
-
-        $this->setLocations([
-            'loc' => $this->getConfig('root'),
-            'lastmod' => $this->getConfig('lastmod'),
-            'changefreq' => 'weekly',
-            'priority' => 1,
-        ]);
+        parent::init();
+        $this->setConfig('type','urls');
     }
 
 
