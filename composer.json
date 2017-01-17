@@ -1,0 +1,22 @@
+{
+  "name": "vanandmkrtchyan/advanced-xml-sitemaps",
+  "description": "Laravel service for generating multiple sitemaps",
+  "type":"library",
+  "license": "MIT",
+  "version":"1.0",
+  "authors": [
+    {
+      "name": "Vanand Mkrtchyan",
+      "email": "vmdesigncompany@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5"
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Sitemaps\\": "src/"
+    }
+  }
+}
